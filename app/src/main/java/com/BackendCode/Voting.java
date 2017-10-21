@@ -1,5 +1,6 @@
 package com.BackendCode;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by keegan on 10/21/17.
@@ -11,6 +12,78 @@ public class Voting {
 
     public Voting() {
         items = new ArrayList<Data>();
+    }
+
+    public Voting(String serialized) {
+        items = new ArrayList<Data>();
+        while (serialized.length() > 0) {
+            String item = removeWord(serialized);
+            serialized = updateSerialize(serialized);
+            serialized = removeSeparator(serialized);
+            int vote = Integer.parseInt(removeWord(serialized));
+
+            if (serialized.length() > 1) {
+                serialized = updateSerialize(serialized);
+                serialized = removeSeparator(serialized);
+            }
+            addItem(item);
+            setVote(item, vote);
+            if (serialized.length() == 1) {
+                break;
+            }
+        }
+    }
+    private String updateSerialize(String serialized) {
+        int pos = 0;
+        while(serialized.charAt(pos) != '\n' && pos < serialized.length()) {
+            pos++;
+        }
+        return serialized.substring(pos);
+    }
+
+    private String removeSeparator(String serialized) {
+
+        return serialized.substring(1);
+    }
+
+    private String removeWord(String serialized) {
+            if(serialized.length() > 1) {
+                int pos = 0;
+                while(serialized.charAt(pos) != '\n' && pos <= serialized.length()) {
+                    pos++;
+                }
+                serialized = serialized.substring(0,pos);
+            }
+
+        return serialized;
+    }
+
+    public String serialize() {
+        String serialized = "";
+        for (Data temp : this.items) {
+            serialized = serialized  + "\n" + temp.getName() + "\n" + temp.getVotes();
+        }
+
+        return serialized;
+    }
+
+    public String pickVoteWinner() {
+        String winner = "";
+        int votes = 0;
+        for (Data temp : this.items) {
+            if(temp.getVotes() > votes) {
+                winner = temp.getName();
+                votes = temp.getVotes();
+            }
+        }
+
+        return winner;
+    }
+
+    public String pickRandomWinner() {
+        Random r = new Random();
+        int winner = r.nextInt(this.size());
+        return this.items.get(winner).getName();
     }
 
     public void addItem(String item) {
@@ -37,6 +110,15 @@ public class Voting {
         }
 
         return vote;
+    }
+
+    public void setVote(String item, int vote) {
+        for (Data temp : this.items) {
+            if (temp.restaurant.equals(item)) {
+                temp.setVotes(vote);
+                break;
+            }
+        }
     }
 
     public String getName(int pos) {
