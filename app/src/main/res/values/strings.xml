@@ -5,4 +5,7 @@
     <!--For content_input_screen.xml-->
     <string name="Submit">Tests</string>
     <string name="enter_text">Enter Restaurant</string>
+
+    <!--For the voting_screen.xml-->
+    <string name="num_of_votes">Number of Votes:</string>
 </resources>
