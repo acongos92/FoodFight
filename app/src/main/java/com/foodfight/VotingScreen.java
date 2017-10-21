@@ -1,9 +1,11 @@
 package com.foodfight;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 import com.BackendCode.Voting;
 
 import Adapters.InputScreenRecyclerViewAdapter;
+import Adapters.SwipeToDelete;
 
 import static com.foodfight.R.id.restaurant;
 
@@ -102,7 +105,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
 
     @Override
     public void onVoteItemClick(String voteItemName) {
-        makeToast(voteItemName + " was Clicked");
+        voting.addVote(voteItemName);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,5 +135,39 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    private void confirmAddVote(String name){
+        String deletePrompt = "Do you wish to delete " + name + "?";
+        String yes = "yes";
+        String no  ="no";
+        tempListener listener = new tempListener();
+        listener.setName(name);
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
+                setTitle("Confirm Delete").setMessage(deletePrompt).setPositiveButton(yes , listener).
+                setNegativeButton("no", listener).show();
+    }
+
+    private class tempListener implements DialogInterface.OnClickListener {
+        private String name;
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    dialog.dismiss();
+                    voting.removeItem(name);
+                    makeToast("Vote was added");
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    dialog.dismiss();
+                    makeToast("Vote not counted");
+                    break;
+            }
+        }
+
+        public void setName(String name){
+            this.name = name;
+        }
+
     }
 }
