@@ -4,10 +4,14 @@ import com.foodfight.R;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.logging.Logger;
+
+import static android.R.id.list;
 
 /**
  * Created by andy on 10/21/2017.
@@ -17,14 +21,15 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
     /**
      * nested interface define how click listeners will behave within this view
      */
-    public interface InputScreenRecyclerViewAdapater {
+    public interface InputScreenRecyclerViewAdapaterClickListener {
         void onSemesterGPAClick(String semesterItemClicked);
     }
 
     //adapter variable declarations
     private static final Logger LOGGER = Logger.getLogger("DisplaySemesterGPAAdapter Logger");
     private Context mContext;
-    private InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapater clickListener;
+    private InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener clickListener;
+    private Voting voting;
 
     /**
      * Constructor
@@ -32,10 +37,10 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
      * Click Listener is defined in interface and implemented at the end of the class
      *
      */
-    public DisplaySemesterGPAAdapter(Context context, Voting voting, InputScreenRecyclerViewAdapater  listener) {
+    public InputScreenRecyclerViewAdapater(Context context, Voting voting, InputScreenRecyclerViewAdapaterClickListener  listener) {
         this.mContext = context;
         this.clickListener = listener;
-        this.semestersAndGPA = list;
+        this.voting = voting;
     }
 
 
@@ -48,16 +53,16 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
      * @return
      */
     @Override
-    public DisplaySemesterGPAAdapter.SemesterAndGPAViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public InputScreenRecyclerViewAdapter.InputScreenViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
 
-        int layoutIdForListItem = R.layout.homescreen_recycler_view_content;
+        int layoutIdForListItem = R.layout.voting_input_screen_recycler_view_content;
         LayoutInflater inflater = LayoutInflater.from(context);
 
         boolean shouldAttachToParentImmediately = false;
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
-        DisplaySemesterGPAAdapter.SemesterAndGPAViewHolder viewHolder = new DisplaySemesterGPAAdapter.SemesterAndGPAViewHolder(view);
+        InputScreenRecyclerViewAdapter.InputScreenViewHolder viewHolder = new InputScreenRecyclerViewAdapter.InputScreenViewHolder(view);
 
         return viewHolder;
     }
@@ -69,9 +74,10 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
      * @param position the position data will be assigned to in the scrollable list
      */
     @Override
-    public void onBindViewHolder(DisplaySemesterGPAAdapter.SemesterAndGPAViewHolder holder, int position) {
+    public void onBindViewHolder(InputScreenRecyclerViewAdapter.InputScreenViewHolder holder, int position) {
         LOGGER.info("DisplaySemesterGPAAdapter start onBindViewHolder");
-        if ((semestersAndGPA.size() < position)){
+        //TODO: change to .size when you get that
+        if ((voting.getVoteCount("string") < position)){
             return;
         }
         String name = semestersAndGPA.get(position).getSemesterOrClassName();
@@ -107,7 +113,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
      * (so in this view holder its tracking just the semester names but could of course hold
      *  multiple views)
      */
-    class SemesterAndGPAViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class InputScreenViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         //define the views this viewHolder will be tracking
         protected TextView userSubmissionView;
