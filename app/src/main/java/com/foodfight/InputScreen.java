@@ -32,7 +32,7 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
 
     private Voting voting;
 
-    private InputScreenRecyclerViewAdapter recyclerViewAdapter;
+    protected InputScreenRecyclerViewAdapter recyclerViewAdapter;
 
     private RecyclerView votingInputView;
     @Override
@@ -44,11 +44,9 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
 
 
 
-        //GABE DONT DELETE THIS
-        voting = new Voting();
-        voting.addItem("first");
-        voting.addItem("second");
+
         setContentView(R.layout.activity_input_screen);
+        voting = new Voting();
         /*
          * Recycler view setup
          */
@@ -88,8 +86,9 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
             @Override
             public void onClick(View v){
                 String s = restEdit.getText().toString();
+                voting.addItem(s);
                 restEdit.setText("");
-                makeToast(s);
+                recyclerViewAdapter.notifyDataSetChanged();
             }
         });
     }
