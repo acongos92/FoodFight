@@ -9,7 +9,7 @@
         android:background="#ECEFF1"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:paddingTop="1dp"
-        android:paddingBottom="1dp" />
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp" />
 
 </LinearLayout>
