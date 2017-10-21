@@ -1,17 +1,13 @@
 package com.foodfight;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
@@ -25,17 +21,14 @@ import android.widget.Toast;
 import com.BackendCode.Voting;
 
 import Adapters.InputScreenRecyclerViewAdapter;
-import Adapters.SwipeToDelete;
 
 import static com.foodfight.R.id.restaurant;
 
-public class InputScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
+public class VotingScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
 
     public EditText restEdit;
 
     public ImageButton submitButton;
-
-    public Button voteButton;
 
     private Voting voting;
 
@@ -49,6 +42,10 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
+
+        setContentView(R.layout.activity_input_screen);
         voting = new Voting();
         /*
          * Recycler view setup
@@ -63,19 +60,10 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         votingInputView.setAdapter(recyclerViewAdapter);
         votingInputView.setLayoutManager(new LinearLayoutManager(this));
         //finishes adapter setup
-        /*
-         * creat and attach swipe listener
-         */
-        SwipeToDelete swipeListener = new SwipeToDelete(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
-        swipeListener.setContext(this);
-        swipeListener.setAdapter(recyclerViewAdapter);
-        ItemTouchHelper swipable = new ItemTouchHelper(swipeListener);
-        swipable.attachToRecyclerView(votingInputView);
 
         //Defines ID's
         restEdit = (EditText) findViewById(R.id.restaurant);
         submitButton = (ImageButton) findViewById(R.id.submit);
-        voteButton = (Button) findViewById(R.id.vote);
 
         /*
             Defines what happens with user input
@@ -109,15 +97,8 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
                 }
             }
         });
-
-        //Defines what happens when Ready to vote is pressed
-        voteButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                confirmSwipeDelete();
-            }
-        });
     }
+
 
     @Override
     public void onVoteItemClick(String voteItemName) {
@@ -151,32 +132,5 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-    }
-
-    //Method that handles the confirmation to intent over
-    private boolean confirmSwipeDelete(){
-        String deletePrompt = "Are you sure you want to vote now?";
-        tempListener listener = new tempListener();
-        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
-                setTitle("Confirm Voting").setMessage(deletePrompt).setPositiveButton("yes", listener).
-                setNegativeButton("no", listener).show();
-
-        return true;
-    }
-
-    //Class that implements the backend of the confirmation to intent over
-    class tempListener implements DialogInterface.OnClickListener {
-        @Override
-        public void onClick(DialogInterface dialog, int which){
-            switch (which) {
-                case DialogInterface.BUTTON_POSITIVE:
-                        Intent i = new Intent(InputScreen.this, VotingScreen.class);
-                        startActivity(i);
-                    break;
-                case DialogInterface.BUTTON_NEGATIVE:
-                    dialog.dismiss();
-                    break;
-            }
-        }
     }
 }
