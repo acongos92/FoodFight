@@ -94,7 +94,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         public void onClick(DialogInterface dialog, int which) {
             switch (which) {
                 case DialogInterface.BUTTON_POSITIVE:
-                    makeToast("Results TODO");
+                    endVote();
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
                     dialog.dismiss();
@@ -102,31 +102,29 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
                     break;
             }
         }
+    }
+
+    private void endVote(){
+        //Gets voting result
+        String winner = "Trashcan Lid";
+        String result = winner + " Wins!";
+        makeToast("Hey");
+        tempListenerEndVote listener = new tempListenerEndVote();
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
+                setTitle("Confirm End Voting?").setMessage(result).setPositiveButton("Return" , listener);
+    }
+
+    private class tempListenerEndVote implements DialogInterface.OnClickListener {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            makeToast("Hey");
+            dialog.dismiss();
+        }
+    }
 
     @Override
     public void onVoteItemClick(String voteItemName) {
         voting.addVote(voteItemName);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_input_screen, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void makeToast(String message){
@@ -150,6 +148,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
 
     private class tempListener implements DialogInterface.OnClickListener {
         private String name;
+
         @Override
         public void onClick(DialogInterface dialog, int which) {
             switch (which) {
@@ -167,7 +166,8 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
             }
         }
 
-        public void setName(String name){
+        public void setName(String name) {
             this.name = name;
+        }
     }
 }
