@@ -45,6 +45,7 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_input_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -179,4 +180,5 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
             }
         }
     }
+
 }
