@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">FoodFight</string>
     <string name="action_settings">Settings</string>
+
+    <!--For content_input_screen.xml-->
+    <string name="Submit">Tests</string>
+    <string name="enter_text">Enter Restaurant</string>
 </resources>
