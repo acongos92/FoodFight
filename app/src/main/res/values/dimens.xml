@@ -1,5 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="button_len">175dp</dimen>
     <dimen name="keyboard_bottom_padding">24dp</dimen>
     <dimen name="checkbox_bottom_padding">36dp</dimen>
+
 </resources>

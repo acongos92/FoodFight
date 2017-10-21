@@ -25,6 +25,7 @@ import com.BackendCode.Voting;
 import Adapters.InputScreenRecyclerViewAdapter;
 import Adapters.SwipeToDelete;
 
+import static com.foodfight.R.id.done_vote;
 import static com.foodfight.R.id.restaurant;
 
 public class VotingScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
@@ -32,6 +33,8 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
     public TextView tv;
 
     private int count = 0;
+
+    public Button vote;
 
     private Voting voting;
 
@@ -66,14 +69,39 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
 
         //Defines ID's
         tv = (TextView)findViewById(R.id.num_votes);
-
-        /*
-            Defines what happens with user input
-         */
+        vote = (Button)findViewById(done_vote);
+        //Defines what happens when done voting button is pressed
+        vote.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                confirmToVote();
+            }
+        });
 
 
     }
 
+    private void confirmToVote(){
+        String deletePrompt = "Are you sure?";
+        tempListenerVote listener = new tempListenerVote();
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
+                setTitle("Confirm End Voting?").setMessage(deletePrompt).setPositiveButton("yes" , listener).
+                setNegativeButton("no", listener).show();
+    }
+
+    private class tempListenerVote implements DialogInterface.OnClickListener {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    makeToast("Results TODO");
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    dialog.dismiss();
+                    makeToast("Voting did not end!");
+                    break;
+            }
+        }
 
     @Override
     public void onVoteItemClick(String voteItemName) {
@@ -141,7 +169,5 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
 
         public void setName(String name){
             this.name = name;
-        }
-
     }
 }
