@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:layout_below="@+id/enterButt"
         android:layout_alignParentStart="true"
         android:layout_marginTop="66dp">
 
@@ -37,7 +36,13 @@
         android:background="@drawable/ic_confirm"
         android:layout_alignRight="@+id/restaurant"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/checkbox_bottom_padding"
-        />
+        android:layout_marginBottom="@dimen/checkbox_bottom_padding" />
+
+    <!--Vote button-->
+    <Button
+        android:id="@+id/vote"
+        android:layout_align="@id/restaurant"
+        android:layout_width="match_parent"
+        android:layout_height="55dp" />
 
 </RelativeLayout>
