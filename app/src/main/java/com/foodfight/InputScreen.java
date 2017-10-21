@@ -187,7 +187,7 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
     @Override
     protected void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
-        outState.putString(VOTE_NAME, )
+        outState.putString(VOTE_NAME, voting.serialize());
     }
 
 }
