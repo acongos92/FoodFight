@@ -65,41 +65,12 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         //finishes adapter setup
 
         //Defines ID's
-        restEdit = (EditText) findViewById(R.id.restaurant);
-        submitButton = (ImageButton) findViewById(R.id.submit);
 
         /*
             Defines what happens with user input
          */
 
-        //Defines what happens when the user hits enter on the keyboard
-        restEdit.setOnEditorActionListener(new EditText.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    submitButton.performClick();
-                    return true;
-                }
-                return false;
-            }
-        });
 
-        //Defines what happens when user clicks the checkbox on edittext
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                String s = restEdit.getText().toString();
-                if (s.length() < 1){
-                    makeToast("Enter a Restaurant");
-                }else if (s.length() > 20){
-                    makeToast("Name Too Long");
-                }else{
-                    voting.addItem(s);
-                    restEdit.setText("");
-                    recyclerViewAdapter.notifyDataSetChanged();
-                }
-            }
-        });
     }
 
 
