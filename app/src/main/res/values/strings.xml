@@ -7,5 +7,5 @@
     <string name="enter_text">Enter Restaurant</string>
 
     <!--For the voting_screen.xml-->
-    <string name="num_of_votes">Number of Votes:</string>
+    <string name="num_of_votes">Number of Votes: 0</string>
 </resources>

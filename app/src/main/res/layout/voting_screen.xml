@@ -5,7 +5,7 @@
 
 
 
-    <!--Number of Votes Text-->
+    <!--Number of Votes-->
     <TextView
         android:id="@+id/num_votes"
         android:layout_width="wrap_content"
@@ -13,19 +13,10 @@
         android:textColor="@color/numOfVotes"
         android:paddingTop="20dp"
         android:textSize="24sp"
-        android:paddingLeft="20dp"
-        android:text="@string/num_of_votes"/>
+        android:text="@string/num_of_votes"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-    <!--The actual number of votes-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="24sp"
-        android:paddingRight="20dp"
-        android:textColor="@color/numOfVotes"
-        android:layout_toLeftOf="@id/num_votes"
-        android:text="0"
-        android:paddingTop="20dp" />
 
     <!--Recycler view here-->
     <android.support.v7.widget.RecyclerView
@@ -40,16 +31,19 @@
         android:layout_marginRight="0dp">
 
     </android.support.v7.widget.RecyclerView>
+
     <!--Done voting-->
     <Button
         android:id="@+id/done_vote"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:textAlignment=""
-        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginBottom="16dp"
         android:layout_marginLeft="8dp"
         android:text="Done Voting"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 
