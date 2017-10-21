@@ -86,9 +86,15 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
             @Override
             public void onClick(View v){
                 String s = restEdit.getText().toString();
-                voting.addItem(s);
-                restEdit.setText("");
-                recyclerViewAdapter.notifyDataSetChanged();
+                if (s.length() < 1){
+                    makeToast("Enter a Restaurant");
+                }else if (s.length() > 20){
+                    makeToast("Name Too Long");
+                }else{
+                    voting.addItem(s);
+                    restEdit.setText("");
+                    recyclerViewAdapter.notifyDataSetChanged();
+                }
             }
         });
     }
