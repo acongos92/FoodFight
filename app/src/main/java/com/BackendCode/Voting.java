@@ -7,7 +7,11 @@ import java.util.ArrayList;
 
 public class Voting {
 
-    private ArrayList<Data> items = new ArrayList<>();
+    private ArrayList<Data> items;
+
+    public Voting() {
+        items = new ArrayList<Data>();
+    }
 
     public void addItem(String item) {
         Data temp = new Data(item, 0);
@@ -18,6 +22,7 @@ public class Voting {
         for (Data temp : this.items) {
             if (temp.getName().equals(item)) {
                 this.items.remove(temp);
+                break;
             }
         }
     }
@@ -27,16 +32,22 @@ public class Voting {
         for (Data temp : this.items) {
             if (temp.restaurant.equals(item)) {
                 vote = temp.getVotes();
+                break;
             }
         }
 
         return vote;
     }
 
+    public String getName(int pos) {
+        return items.get(pos).getName();
+    }
+
     public void addVote(String item) {
         for (Data temp : this.items) {
             if (temp.restaurant.equals(item)) {
                 temp.setVotes(temp.getVotes() + 1);
+                break;
             }
         }
     }

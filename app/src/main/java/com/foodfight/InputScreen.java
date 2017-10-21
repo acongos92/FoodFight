@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.BackendCode.Voting;
 
 public class InputScreen extends AppCompatActivity {
 
@@ -18,6 +19,12 @@ public class InputScreen extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Voting thing = new Voting();
+        int size1 = thing.size();
+        thing.addItem("Cat");
+        thing.addVote("Cat");
+        int size2 = thing.size();
+        thing.removeItem("Cat");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
