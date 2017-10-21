@@ -42,6 +42,8 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         //GABE DONT DELETE THIS
         voting = new Voting();
         voting.addItem("first");
@@ -50,7 +52,6 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         /*
          * Recycler view setup
          */
-
 
         //set the layout manager
         votingInputView = (RecyclerView) this.findViewById(R.id.content_input_recycler_view);
@@ -62,24 +63,33 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         votingInputView.setLayoutManager(new LinearLayoutManager(this));
         //finishes adapter setup
 
+        //Defines ID's
         restEdit = (EditText) findViewById(R.id.restaurant);
-
-
-        //Defines what happens when the user hits enter on the keyboard
         submitButton = (ImageButton) findViewById(R.id.submit);
 
+        /*
+            Defines what happens with user input
+         */
+
+        //Defines what happens when the user hits enter on the keyboard
         restEdit.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     submitButton.performClick();
-                    //Here is the string
-                    String s = restEdit.getText().toString();
-                    restEdit.setText("");
-                    makeToast(s);
                     return true;
                 }
                 return false;
+            }
+        });
+
+        //Defines what happens when user clicks the checkbox on edittext
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                String s = restEdit.getText().toString();
+                restEdit.setText("");
+                makeToast(s);
             }
         });
     }
