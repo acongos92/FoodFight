@@ -17,7 +17,7 @@ import static android.R.id.list;
  * Created by andy on 10/21/2017.
  */
 
-public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputScreenRecyclerViewAdapter.ClassViewHolder> {
+public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputScreenRecyclerViewAdapter.InputScreenViewHolder> {
     /**
      * nested interface define how click listeners will behave within this view
      */
@@ -37,7 +37,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
      * Click Listener is defined in interface and implemented at the end of the class
      *
      */
-    public InputScreenRecyclerViewAdapater(Context context, Voting voting, InputScreenRecyclerViewAdapaterClickListener  listener) {
+    public InputScreenRecyclerViewAdapter(Context context, Voting voting, InputScreenRecyclerViewAdapaterClickListener  listener) {
         this.mContext = context;
         this.clickListener = listener;
         this.voting = voting;
@@ -80,9 +80,10 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
             return;
         }
         //TODO: change to name at position whatever
-        String restName = "tempString";
+        String restName =  voting.getName(position);
         holder.userSubmissionView.setText(restName);
         //control display of gpa digits
+
 
     }
 
@@ -93,7 +94,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
      */
     @Override
     public int getItemCount() {
-        return semestersAndGPA.size();
+        return voting.size();
     }
 
     /**
@@ -111,11 +112,11 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
          * constructor for the view holder
          * @param itemView the view which will hold an item of data in the recycler view (single row)
          */
-        public SemesterAndGPAViewHolder(View itemView) {
+        public InputScreenViewHolder(View itemView) {
 
             super(itemView);
 
-            userSubmissionView = (TextView) itemView.findViewById(R.id.tv_submission_name;
+            userSubmissionView = (TextView) itemView.findViewById(R.id.tv_submission_name);
             itemView.setOnClickListener(this);
 
         }
@@ -124,11 +125,9 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
         @Override
         public void onClick(View view){
 
-            LOGGER.info("DisplaySemesterGPAAdapter RECYCLERVIEWCLICKLISTENER start onClick ");
+            LOGGER.info("IinputScreenRecyclerView clicklistener started ");
             int clickedPosition = getAdapterPosition();
             //procceses out the the string semester: leaving only the semester name for use by the click listener
-            String semesterName = String.valueOf(semesterNameAndGpaNameView.getText()).substring(APPEND_SEMESTER_STRING.length());
-            clickListener.onSemesterGPAClick(semesterName);
         }
 
 
