@@ -76,25 +76,14 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
     @Override
     public void onBindViewHolder(InputScreenRecyclerViewAdapter.InputScreenViewHolder holder, int position) {
         LOGGER.info("DisplaySemesterGPAAdapter start onBindViewHolder");
-        //TODO: change to .size when you get that
-        if ((voting.getVoteCount("string") < position)){
+        if ((voting.size() < position)){
             return;
         }
-        String name = semestersAndGPA.get(position).getSemesterOrClassName();
-        double gpa = semestersAndGPA.get(position).calculateGPA();
-        String gpas = Double.toString(gpa);
-
-        String nameString = APPEND_SEMESTER_STRING + name;
-        String gradeString;
-        holder.semesterNameAndGpaNameView.setText(nameString);
+        //TODO: change to name at position whatever
+        String restName = "tempString";
+        holder.userSubmissionView.setText(restName);
         //control display of gpa digits
-        if(gpas.length() > 4){
-            gradeString = APPEND_GRADE_STRING  + gpas.substring(0,4);
-            holder.semesterNameAndGpaGPAview.setText(gradeString);
-        }else {
-            gradeString = APPEND_GRADE_STRING + gpas;
-            holder.semesterNameAndGpaGPAview.setText(gradeString);
-        }
+
     }
 
     /**
