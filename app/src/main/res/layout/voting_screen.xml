@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+
+
+    <!--Number of Votes -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Number of Votes"/>
+
+    <!--Recycler view here-->
+
+    <!--Done voting-->
+    <Button
+        android:id="@+id/done_vote"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Done Voting"
+        android:layout_marginRight="8dp" />
+
+
+
+
+
+</RelativeLayout>
