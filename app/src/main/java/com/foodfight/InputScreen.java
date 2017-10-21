@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.BackendCode.Voting;
 
 import Adapters.InputScreenRecyclerViewAdapter;
+import Adapters.SwipeToDelete;
 
 import static com.foodfight.R.id.restaurant;
 
@@ -41,7 +43,7 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         setContentView(R.layout.activity_input_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        
+
         voting = new Voting();
         /*
          * Recycler view setup
@@ -56,6 +58,14 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         votingInputView.setAdapter(recyclerViewAdapter);
         votingInputView.setLayoutManager(new LinearLayoutManager(this));
         //finishes adapter setup
+        /*
+         * creat and attach swipe listener
+         */
+        SwipeToDelete swipeListener = new SwipeToDelete(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+        swipeListener.setContext(this);
+        swipeListener.setAdapter(recyclerViewAdapter);
+        ItemTouchHelper swipable = new ItemTouchHelper(swipeListener);
+        swipable.attachToRecyclerView(votingInputView);
 
         //Defines ID's
         restEdit = (EditText) findViewById(R.id.restaurant);

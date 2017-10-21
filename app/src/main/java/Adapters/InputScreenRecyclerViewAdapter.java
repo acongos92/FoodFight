@@ -129,6 +129,10 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
             clickListener.onVoteItemClick(String.valueOf(userSubmissionView.getText()));
         }
 
+        public void removeFromAdapater(String name){
+            voting.removeItem(name);
+        }
+
 
     }
 }
