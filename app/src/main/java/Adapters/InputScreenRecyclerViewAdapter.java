@@ -126,7 +126,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
 
             LOGGER.info("IinputScreenRecyclerView clicklistener started ");
             int clickedPosition = getAdapterPosition();
-            //procceses out the the string semester: leaving only the semester name for use by the click listener
+
         }
 
 

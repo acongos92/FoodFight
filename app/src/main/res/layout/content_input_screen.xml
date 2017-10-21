@@ -24,9 +24,8 @@
     />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/content_input_recycler_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ECEFF1"
         android:scrollbars="vertical"
         android:layout_below="@+id/enterButt"
         android:layout_alignParentStart="true"
