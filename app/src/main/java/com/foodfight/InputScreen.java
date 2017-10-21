@@ -1,9 +1,12 @@
 package com.foodfight;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -101,16 +104,10 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         voteButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                
-
-
-
-
+                confirmSwipeDelete();
             }
         });
-
     }
-
 
     @Override
     public void onVoteItemClick(String voteItemName) {
@@ -144,5 +141,32 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    //Method that handles the confirmation to intent over
+    private boolean confirmSwipeDelete(){
+        String deletePrompt = "Are you sure you want to vote now?";
+        tempListener listener = new tempListener();
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
+                setTitle("Confirm Voting").setMessage(deletePrompt).setPositiveButton("yes", listener).
+                setNegativeButton("no", listener).show();
+
+        return true;
+    }
+
+    //Class that implements the backend of the confirmation to intent over
+    class tempListener implements DialogInterface.OnClickListener {
+        @Override
+        public void onClick(DialogInterface dialog, int which){
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                        Intent i = new Intent(InputScreen.this, VotingScreen.class);
+                        startActivity(i);
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    dialog.dismiss();
+                    break;
+            }
+        }
     }
 }
