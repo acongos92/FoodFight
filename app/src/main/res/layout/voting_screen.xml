@@ -28,7 +28,18 @@
         android:paddingTop="20dp" />
 
     <!--Recycler view here-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/content_voting_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:scrollbars="vertical"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp">
 
+    </android.support.v7.widget.RecyclerView>
     <!--Done voting-->
     <Button
         android:id="@+id/done_vote"
