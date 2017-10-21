@@ -110,13 +110,13 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
     }
 
     private void confirmAddVote(String name){
-        String deletePrompt = "Do you wish to delete " + name + "?";
+        String deletePrompt = "Do you wish to vote for " + name + "?";
         String yes = "yes";
         String no  ="no";
         tempListener listener = new tempListener();
         listener.setName(name);
         new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
-                setTitle("Confirm Delete").setMessage(deletePrompt).setPositiveButton(yes , listener).
+                setTitle("Confirm Vote").setMessage(deletePrompt).setPositiveButton(yes , listener).
                 setNegativeButton("no", listener).show();
     }
 
