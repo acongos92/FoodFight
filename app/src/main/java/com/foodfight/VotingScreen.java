@@ -24,13 +24,11 @@ import Adapters.InputScreenRecyclerViewAdapter;
 
 import static com.foodfight.R.id.restaurant;
 
-public class InputScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
+public class VotingScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
 
     public EditText restEdit;
 
     public ImageButton submitButton;
-
-    public Button voteButton;
 
     private Voting voting;
 
@@ -66,7 +64,6 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         //Defines ID's
         restEdit = (EditText) findViewById(R.id.restaurant);
         submitButton = (ImageButton) findViewById(R.id.submit);
-        voteButton = (Button) findViewById(R.id.vote);
 
         /*
             Defines what happens with user input
@@ -100,19 +97,6 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
                 }
             }
         });
-
-        //Defines what happens when Ready to vote is pressed
-        voteButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                
-
-
-
-
-            }
-        });
-
     }
 
 
