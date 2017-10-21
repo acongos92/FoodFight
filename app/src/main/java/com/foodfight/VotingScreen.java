@@ -29,9 +29,9 @@ import static com.foodfight.R.id.restaurant;
 
 public class VotingScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
 
-    public EditText restEdit;
+    public TextView tv;
 
-    public ImageButton submitButton;
+    private int count = 0;
 
     private Voting voting;
 
@@ -65,6 +65,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         //finishes adapter setup
 
         //Defines ID's
+        tv = (TextView)findViewById(R.id.num_votes);
 
         /*
             Defines what happens with user input
@@ -128,6 +129,8 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
                     dialog.dismiss();
                     voting.addVote(name);
                     makeToast("Vote was added");
+                    count++;
+                    tv.setText("Number of votes: " + count);
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
                     dialog.dismiss();
