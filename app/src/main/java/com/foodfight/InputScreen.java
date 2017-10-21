@@ -1,4 +1,4 @@
-package com.Gui;
+package com.foodfight;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,8 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.foodfight.R;
 
 public class InputScreen extends AppCompatActivity {
 
