@@ -126,7 +126,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
 
             LOGGER.info("IinputScreenRecyclerView clicklistener started ");
             int clickedPosition = getAdapterPosition();
-
+            clickListener.onVoteItemClick(String.valueOf(userSubmissionView.getText()));
         }
 
 
