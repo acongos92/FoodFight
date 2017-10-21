@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.BackendCode.Voting;
 
 import static com.foodfight.R.id.restaurant;
 
@@ -23,7 +24,6 @@ public class InputScreen extends AppCompatActivity{
     public EditText restEdit;
 
     public Button submitRestButt;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
