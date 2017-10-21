@@ -43,5 +43,5 @@
         android:text="Done Voting"
         android:layout_marginRight="8dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true" />f
 </RelativeLayout>
