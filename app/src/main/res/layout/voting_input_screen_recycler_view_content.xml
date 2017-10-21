@@ -6,10 +6,15 @@
         android:id="@+id/tv_submission_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ECEFF1"
         android:textAlignment="center"
         android:textSize="30sp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black">
+
+    </View>
 
 </LinearLayout>

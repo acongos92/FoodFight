@@ -45,7 +45,6 @@
         android:id="@+id/done_vote"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:textAlignment=""
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:text="Done Voting"
