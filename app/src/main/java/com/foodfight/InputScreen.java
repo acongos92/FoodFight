@@ -43,11 +43,7 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         setContentView(R.layout.activity_input_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
-        setContentView(R.layout.activity_input_screen);
+        
         voting = new Voting();
         /*
          * Recycler view setup
