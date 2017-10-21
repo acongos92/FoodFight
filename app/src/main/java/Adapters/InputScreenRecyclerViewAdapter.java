@@ -102,7 +102,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
      * (so in this view holder its tracking just the semester names but could of course hold
      *  multiple views)
      */
-    class InputScreenViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class InputScreenViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         //define the views this viewHolder will be tracking
         protected TextView userSubmissionView;

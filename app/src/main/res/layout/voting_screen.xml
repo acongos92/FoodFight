@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+
+
+    <!--Number of Votes-->
+    <TextView
+        android:id="@+id/num_votes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/numOfVotes"
+        android:paddingTop="20dp"
+        android:textSize="24sp"
+        android:text="@string/num_of_votes"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <!--Recycler view here-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/content_voting_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:scrollbars="vertical"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <!--Done voting-->
+    <Button
+        android:id="@+id/done_vote"
+        android:layout_width="@dimen/button_len"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="8dp"
+        android:text="Done Voting"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
