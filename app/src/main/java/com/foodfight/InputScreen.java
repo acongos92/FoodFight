@@ -30,7 +30,7 @@ import Adapters.SwipeToDelete;
 import static com.foodfight.R.id.restaurant;
 
 public class InputScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
-
+    private final String VOTE_NAME = "voting";
     public EditText restEdit;
 
     public ImageButton submitButton;
@@ -49,8 +49,11 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         setContentView(R.layout.activity_input_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        voting = new Voting();
+        if(savedInstanceState != null){
+            voting = new Voting(savedInstanceState.getString(VOTE_NAME));
+        }else {
+            voting = new Voting();
+        }
         /*
          * Recycler view setup
          */
@@ -179,6 +182,11 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
                     break;
             }
         }
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putString(VOTE_NAME, )
     }
 
 }
