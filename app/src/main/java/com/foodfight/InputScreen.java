@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.BackendCode.Voting;
@@ -27,7 +28,7 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
 
     public EditText restEdit;
 
-    public Button submitRestButt;
+    public ImageButton submitButton;
 
     private Voting voting;
 
@@ -65,13 +66,13 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
 
 
         //Defines what happens when the user hits enter on the keyboard
-        submitRestButt = (Button) findViewById(R.id.enterButt);
+        submitButton = (ImageButton) findViewById(R.id.submit);
 
         restEdit.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    submitRestButt.performClick();
+                    submitButton.performClick();
                     //Here is the string
                     String s = restEdit.getText().toString();
                     restEdit.setText("");
