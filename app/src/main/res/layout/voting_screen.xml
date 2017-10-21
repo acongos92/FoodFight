@@ -5,11 +5,23 @@
 
 
 
-    <!--Number of Votes -->
+    <!--Number of Votes Text-->
+    <TextView
+        android:id="@+id/num_votes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/numOfVotes"
+        android:paddingTop="20dp"
+        android:textSize="24sp"
+        android:paddingLeft="20dp"
+        android:text="@string/num_of_votes"/>
+
+    <!--The actual number of votes-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Number of Votes"/>
+        android:text="0"
+        android:layout_alignParentRight="true"/>
 
     <!--Recycler view here-->
     <android.support.v7.widget.RecyclerView
