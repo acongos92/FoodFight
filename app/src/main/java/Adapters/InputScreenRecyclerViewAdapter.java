@@ -26,7 +26,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
     }
 
     //adapter variable declarations
-    private static final Logger LOGGER = Logger.getLogger("DisplaySemesterGPAAdapter Logger");
+    private static final Logger LOGGER = Logger.getLogger("InputScreenRecyclerViewAdapter Logger");
     private Context mContext;
     private InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener clickListener;
     private Voting voting;
@@ -112,7 +112,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
          * constructor for the view holder
          * @param itemView the view which will hold an item of data in the recycler view (single row)
          */
-        public InputScreenViewHolder(View itemView) {
+        protected InputScreenViewHolder(View itemView) {
 
             super(itemView);
 
