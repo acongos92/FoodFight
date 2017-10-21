@@ -22,7 +22,7 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
      * nested interface define how click listeners will behave within this view
      */
     public interface InputScreenRecyclerViewAdapaterClickListener {
-        void onSemesterGPAClick(String semesterItemClicked);
+        void onVoteItemClick(String semesterItemClicked);
     }
 
     //adapter variable declarations
@@ -79,7 +79,6 @@ public class InputScreenRecyclerViewAdapter extends RecyclerView.Adapter<InputSc
         if ((voting.size() < position)){
             return;
         }
-        //TODO: change to name at position whatever
         String restName =  voting.getName(position);
         holder.userSubmissionView.setText(restName);
         //control display of gpa digits
