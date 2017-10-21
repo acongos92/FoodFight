@@ -44,8 +44,10 @@ public class InputScreen extends AppCompatActivity{
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     submitRestButt.performClick();
-                    makeToast("You done the clicky clack");
+                    //Here is the string
+                    String s = restEdit.getText().toString();
                     restEdit.setText("");
+                    makeToast(s);
                     return true;
                 }
                 return false;

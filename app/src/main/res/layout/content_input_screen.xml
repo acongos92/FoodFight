@@ -6,15 +6,22 @@
     android:paddingRight="16dp">
 
 
-    <EditText
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/hi"/>
 
     <Button
         android:id="@+id/enterButt"
         android:layout_width="100dp"
         android:layout_height="100dp" />
+
+    <!--The submit button also pressed when enter is hit on the keyboard (configured in inputscreen)-->
+    <ImageButton
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_confirm"
+        android:layout_alignRight="@+id/restaurant"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/checkbox_bottom_padding"
+    />
 
     <!--Restaurant Text Box-->
     <EditText
@@ -25,7 +32,7 @@
         android:inputType="textAutoCorrect"
         android:imeOptions="actionDone"
         android:singleLine="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="@dimen/keyboard_bottom_padding"
         android:hint="@string/enter_text"/>
 
 </RelativeLayout>
