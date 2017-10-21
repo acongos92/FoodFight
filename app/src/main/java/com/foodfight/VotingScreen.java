@@ -126,7 +126,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
             switch (which) {
                 case DialogInterface.BUTTON_POSITIVE:
                     dialog.dismiss();
-                    voting.removeItem(name);
+                    voting.addVote(name);
                     makeToast("Vote was added");
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
