@@ -16,6 +16,18 @@
         android:layout_width="100dp"
         android:layout_height="100dp" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/content_input_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ECEFF1"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/enterButt"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="66dp">
+
+    </android.support.v7.widget.RecyclerView>
+
     <!--Restaurant Text Box-->
     <EditText
         android:id="@+id/restaurant"

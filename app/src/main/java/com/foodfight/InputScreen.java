@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,14 +19,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.BackendCode.Voting;
 
+import Adapters.InputScreenRecyclerViewAdapter;
+
 import static com.foodfight.R.id.restaurant;
 
-public class InputScreen extends AppCompatActivity{
+public class InputScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
 
     public EditText restEdit;
 
     public Button submitRestButt;
 
+    private Voting voting;
+
+    private InputScreenRecyclerViewAdapter recyclerViewAdapter;
+
+    private RecyclerView votingInputView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +41,26 @@ public class InputScreen extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //GABE DONT DELETE THIS
+        voting = new Voting();
+        voting.addItem("first");
+        voting.addItem("second");
         setContentView(R.layout.activity_input_screen);
+        /*
+         * Recycler view setup
+         */
+
+
+        //set the layout manager
+        votingInputView = (RecyclerView) this.findViewById(R.id.content_input_recycler_view);
+
+
+        recyclerViewAdapter = new InputScreenRecyclerViewAdapter(this,voting,this);
+
+        votingInputView.setAdapter(recyclerViewAdapter);
+        votingInputView.setLayoutManager(new LinearLayoutManager(this));
+        //finishes adapter setup
+
         restEdit = (EditText) findViewById(R.id.restaurant);
 
 
@@ -54,7 +82,10 @@ public class InputScreen extends AppCompatActivity{
     }
 
 
-
+    @Override
+    public void onVoteItemClick(String voteItemName) {
+        makeToast(voteItemName + " was Clicked");
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
