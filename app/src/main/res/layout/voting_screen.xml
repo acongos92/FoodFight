@@ -7,7 +7,7 @@
 
     <!--Number of Votes Text-->
     <TextView
-        android:
+        android:id="@+id/num_votes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="@color/numOfVotes"
@@ -20,7 +20,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignRight=""/>
+        android:text="0"
+        android:layout_alignParentRight="true"/>
 
     <!--Recycler view here-->
 
