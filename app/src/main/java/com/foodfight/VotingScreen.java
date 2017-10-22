@@ -64,10 +64,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
 
         //set the layout manager
         votingInputView = (RecyclerView) this.findViewById(R.id.content_voting_recycler_view);
-
-
         recyclerViewAdapter = new InputScreenRecyclerViewAdapter(this,voting,this);
-
         votingInputView.setAdapter(recyclerViewAdapter);
         votingInputView.setLayoutManager(new LinearLayoutManager(this));
         //finishes adapter setup
