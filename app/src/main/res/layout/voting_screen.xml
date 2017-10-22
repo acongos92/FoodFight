@@ -22,6 +22,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/content_voting_recycler_view"
         android:layout_width="0dp"
+        android:background="@color/colorPrimary"
         android:layout_height="0dp"
         android:layout_alignParentStart="true"
         android:scrollbars="vertical"
@@ -43,5 +44,5 @@
         android:text="Done Voting"
         android:layout_marginRight="8dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true" />f
 </RelativeLayout>

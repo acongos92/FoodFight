@@ -116,14 +116,15 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         makeToast("Hey");
         tempListenerEndVote listener = new tempListenerEndVote();
         new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
-                setTitle("Confirm End Voting?").setMessage(result).setPositiveButton("Return" , listener);
+                setTitle("Confirm End Voting?").setMessage(result).setPositiveButton("Return" , listener).show();
     }
 
     private class tempListenerEndVote implements DialogInterface.OnClickListener {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            makeToast("Hey");
             dialog.dismiss();
+            Intent i = new Intent(VotingScreen.this, InputScreen.class);
+            startActivity(i);
         }
     }
 
