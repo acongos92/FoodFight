@@ -7,7 +7,6 @@
 
 
     <!--Restaurant Text Box-->
-
     <EditText
         android:id="@+id/restaurant"
         android:layout_width="0dp"
@@ -18,17 +17,13 @@
         android:singleLine="true"
         android:hint="@string/enter_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/submit"
         android:layout_marginRight="8dp"
         app:layout_constraintHorizontal_bias="1.0"
-<<<<<<< HEAD
-        android:layout_marginStart="8dp"
-=======
         android:layout_marginStart="16dp"
->>>>>>> c8641da1a4a8c0307e638f159844fd8e6b4a871b
         android:layout_marginEnd="8dp" />
 
     <!--The submit button also pressed when enter is hit on the keyboard (configured in inputscreen)-->
@@ -39,20 +34,13 @@
         android:background="@drawable/ic_confirm"
         android:layout_alignRight="@+id/restaurant"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="24dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-<<<<<<< HEAD
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp" />
-
-    <!--Vote button-->
-=======
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/vote"
         android:layout_marginEnd="24dp" />
-
     <!--Vote button-->
     <Button
         android:id="@+id/vote"
@@ -67,7 +55,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
->>>>>>> c8641da1a4a8c0307e638f159844fd8e6b4a871b
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/content_input_recycler_view"
@@ -75,45 +62,16 @@
         android:layout_height="wrap_content"
         android:background="#fffafafa"
         android:layout_alignParentStart="true"
-<<<<<<< HEAD
-=======
         android:layout_marginBottom="45dp"
         android:layout_marginTop="45dp"
->>>>>>> c8641da1a4a8c0307e638f159844fd8e6b4a871b
         android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/vote"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-<<<<<<< HEAD
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/restaurant"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/button2">
-=======
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.0">
->>>>>>> c8641da1a4a8c0307e638f159844fd8e6b4a871b
 
     </android.support.v7.widget.RecyclerView>
-
-    <Button
-        android:id="@+id/vote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        android:layout_weight="1"
-        android:text="Vote Randomly"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Vote Manually"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
