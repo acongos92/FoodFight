@@ -116,7 +116,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         String result = winner + " Wins!";
         tempListenerEndVote listener = new tempListenerEndVote();
         new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
-                setTitle("Confirm End Voting?").setMessage(result).setPositiveButton("Return" , listener).show();
+                setTitle("Winner Winer Chicken Dinner").setMessage(result).setPositiveButton("Return" , listener).show();
     }
 
     private class tempListenerEndVote implements DialogInterface.OnClickListener {
