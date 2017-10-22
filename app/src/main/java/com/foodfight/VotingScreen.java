@@ -32,6 +32,7 @@ import static com.foodfight.R.id.restaurant;
 public class VotingScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
     private final String VOTE_NAME = "voting";
 
+    private final String INT_NAME = "count";
     public TextView tv;
 
     private int count = 0;
@@ -47,6 +48,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(savedInstanceState != null){
+            count = savedInstanceState.getInt(INT_NAME);
             String inString = savedInstanceState.getString(VOTE_NAME);
             voting = new Voting(inString);
         }else {
@@ -71,6 +73,8 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
 
         //Defines ID's
         tv = (TextView)findViewById(R.id.num_votes);
+        String text = "Number of votes: " + Integer.toString(count);
+        tv.setText(text);
         vote = (Button)findViewById(done_vote);
         //Defines what happens when done voting button is pressed
         vote.setOnClickListener(new View.OnClickListener(){
@@ -127,7 +131,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
 
     @Override
     public void onVoteItemClick(String voteItemName) {
-        voting.addVote(voteItemName);
+        confirmAddVote(voteItemName);
     }
 
     private void makeToast(String message){
@@ -172,5 +176,12 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         public void setName(String name) {
             this.name = name;
         }
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        String outString = voting.serialize();
+        outState.putString(VOTE_NAME, outString);
+        outState.putInt(INT_NAME, count);
     }
 }
