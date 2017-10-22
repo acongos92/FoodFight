@@ -2,6 +2,7 @@ package com.foodfight;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,6 +30,7 @@ import static com.foodfight.R.id.done_vote;
 import static com.foodfight.R.id.restaurant;
 
 public class VotingScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
+    private final String VOTE_NAME = "voting";
 
     public TextView tv;
 
@@ -44,15 +46,18 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input_screen);
+        if(savedInstanceState != null){
+            String inString = savedInstanceState.getString(VOTE_NAME);
+            voting = new Voting(inString);
+        }else {
+            Intent i = getIntent();
+            String inString = i.getStringExtra(VOTE_NAME);
+            voting = new Voting(inString);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
         setContentView(R.layout.voting_screen);
-        voting = new Voting();
         /*
          * Recycler view setup
          */

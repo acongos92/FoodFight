@@ -51,7 +51,8 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         setSupportActionBar(toolbar);
 
         if(savedInstanceState != null){
-            voting = new Voting(savedInstanceState.getString(VOTE_NAME));
+            String inString = savedInstanceState.getString(VOTE_NAME);
+            voting = new Voting(inString);
         }else {
             voting = new Voting();
         }
@@ -176,6 +177,7 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
             switch (which) {
                 case DialogInterface.BUTTON_POSITIVE:
                         Intent i = new Intent(InputScreen.this, VotingScreen.class);
+                        i.putExtra(VOTE_NAME, voting.serialize());
                         startActivity(i);
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
@@ -187,7 +189,8 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
     @Override
     protected void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
-        outState.putString(VOTE_NAME, voting.serialize());
+        String outString = voting.serialize();
+        outState.putString(VOTE_NAME, outString);
     }
 
 }
