@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,8 +25,6 @@ import com.BackendCode.Voting;
 import Adapters.InputScreenRecyclerViewAdapter;
 import Adapters.SwipeToDelete;
 
-import static com.foodfight.R.id.restaurant;
-
 public class InputScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
 
     public EditText restEdit;
@@ -45,11 +41,12 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_input_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        voting = new Voting("cat\n1\ndog\n2\nbird\n3");
+        voting.size();
         /*
          * Recycler view setup
          */
@@ -75,7 +72,7 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
         //Defines ID's
         restEdit = (EditText) findViewById(R.id.restaurant);
         submitButton = (ImageButton) findViewById(R.id.submit);
-        voteButton = (Button) findViewById(R.id.vote);
+        voteButton = (Button) findViewById(R.id.voteRandomly);
 
         /*
             Defines what happens with user input
@@ -179,5 +176,4 @@ public class InputScreen extends AppCompatActivity implements InputScreenRecycle
             }
         }
     }
-
 }
