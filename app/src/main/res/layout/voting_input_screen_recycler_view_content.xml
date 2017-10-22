@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:background="#cce3ff"
         android:paddingTop="5dp"
         android:paddingBottom="5dp" />
     <View
