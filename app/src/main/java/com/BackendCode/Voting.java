@@ -61,7 +61,11 @@ public class Voting {
     public String serialize() {
         String serialized = "";
         for (Data temp : this.items) {
-            serialized = serialized  + "\n" + temp.getName() + "\n" + temp.getVotes();
+            if(serialized.length() == 0){
+                serialized = serialized + temp.getName() + "\n" + temp.getVotes();
+            }else {
+                serialized = serialized + "\n" + temp.getName() + "\n" + temp.getVotes();
+            }
         }
 
         return serialized;

@@ -21,11 +21,12 @@
     <!--Recycler view here-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/content_voting_recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:scrollbars="vertical"
-        android:layout_marginTop="0dp"
+        android:paddingTop="10dp"
+        android:layout_below="@id/num_votes"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp">
@@ -43,5 +44,5 @@
         android:text="Done Voting"
         android:layout_marginRight="8dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true" />f
 </RelativeLayout>

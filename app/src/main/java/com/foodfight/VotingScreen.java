@@ -2,6 +2,7 @@ package com.foodfight;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,6 +30,7 @@ import static com.foodfight.R.id.done_vote;
 import static com.foodfight.R.id.restaurant;
 
 public class VotingScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
+    private final String VOTE_NAME = "voting";
 
     public TextView tv;
 
@@ -44,25 +46,25 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input_screen);
+        if(savedInstanceState != null){
+            String inString = savedInstanceState.getString(VOTE_NAME);
+            voting = new Voting(inString);
+        }else {
+            Intent i = getIntent();
+            String inString = i.getStringExtra(VOTE_NAME);
+            voting = new Voting(inString);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
         setContentView(R.layout.voting_screen);
-        voting = new Voting();
         /*
          * Recycler view setup
          */
 
         //set the layout manager
         votingInputView = (RecyclerView) this.findViewById(R.id.content_voting_recycler_view);
-
-
         recyclerViewAdapter = new InputScreenRecyclerViewAdapter(this,voting,this);
-
         votingInputView.setAdapter(recyclerViewAdapter);
         votingInputView.setLayoutManager(new LinearLayoutManager(this));
         //finishes adapter setup
@@ -111,14 +113,15 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         makeToast("Hey");
         tempListenerEndVote listener = new tempListenerEndVote();
         new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).
-                setTitle("Confirm End Voting?").setMessage(result).setPositiveButton("Return" , listener);
+                setTitle("Confirm End Voting?").setMessage(result).setPositiveButton("Return" , listener).show();
     }
 
     private class tempListenerEndVote implements DialogInterface.OnClickListener {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            makeToast("Hey");
             dialog.dismiss();
+            Intent i = new Intent(VotingScreen.this, InputScreen.class);
+            startActivity(i);
         }
     }
 
