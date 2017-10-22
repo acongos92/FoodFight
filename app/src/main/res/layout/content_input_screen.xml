@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:layout_height="match_parent">
 
 
     <!--Restaurant Text Box-->
@@ -26,7 +24,11 @@
         app:layout_constraintRight_toLeftOf="@+id/submit"
         android:layout_marginRight="8dp"
         app:layout_constraintHorizontal_bias="1.0"
+<<<<<<< HEAD
         android:layout_marginStart="8dp"
+=======
+        android:layout_marginStart="16dp"
+>>>>>>> c8641da1a4a8c0307e638f159844fd8e6b4a871b
         android:layout_marginEnd="8dp" />
 
     <!--The submit button also pressed when enter is hit on the keyboard (configured in inputscreen)-->
@@ -40,24 +42,57 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+<<<<<<< HEAD
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp" />
 
     <!--Vote button-->
+=======
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/vote"
+        android:layout_marginEnd="24dp" />
+
+    <!--Vote button-->
+    <Button
+        android:id="@+id/vote"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/restaurant"
+        android:layout_marginLeft="8dp"
+        android:text="Ready to Vote"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+>>>>>>> c8641da1a4a8c0307e638f159844fd8e6b4a871b
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/content_input_recycler_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:background="#fffafafa"
         android:layout_alignParentStart="true"
+<<<<<<< HEAD
+=======
+        android:layout_marginBottom="45dp"
+        android:layout_marginTop="45dp"
+>>>>>>> c8641da1a4a8c0307e638f159844fd8e6b4a871b
         android:scrollbars="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+<<<<<<< HEAD
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/restaurant"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/button2">
+=======
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0">
+>>>>>>> c8641da1a4a8c0307e638f159844fd8e6b4a871b
 
     </android.support.v7.widget.RecyclerView>
 
