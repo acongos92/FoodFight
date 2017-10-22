@@ -32,6 +32,8 @@ import static com.foodfight.R.id.restaurant;
 public class VotingScreen extends AppCompatActivity implements InputScreenRecyclerViewAdapter.InputScreenRecyclerViewAdapaterClickListener{
     private final String VOTE_NAME = "voting";
 
+    private final String VOTE_NUM = "count";
+
     public TextView tv;
 
     private int count = 0;
@@ -48,6 +50,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         super.onCreate(savedInstanceState);
         if(savedInstanceState != null){
             String inString = savedInstanceState.getString(VOTE_NAME);
+            count = savedInstanceState.getInt(VOTE_NUM);
             voting = new Voting(inString);
         }else {
             Intent i = getIntent();
@@ -67,10 +70,13 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         recyclerViewAdapter = new InputScreenRecyclerViewAdapter(this,voting,this);
         votingInputView.setAdapter(recyclerViewAdapter);
         votingInputView.setLayoutManager(new LinearLayoutManager(this));
+
+
         //finishes adapter setup
 
         //Defines ID's
         tv = (TextView)findViewById(R.id.num_votes);
+        tv.setText("Number of votes: " + (Integer.toString(count)));
         vote = (Button)findViewById(done_vote);
         //Defines what happens when done voting button is pressed
         vote.setOnClickListener(new View.OnClickListener(){
@@ -127,7 +133,7 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
 
     @Override
     public void onVoteItemClick(String voteItemName) {
-        voting.addVote(voteItemName);
+        confirmAddVote(voteItemName);
     }
 
     private void makeToast(String message){
@@ -172,5 +178,12 @@ public class VotingScreen extends AppCompatActivity implements InputScreenRecycl
         public void setName(String name) {
             this.name = name;
         }
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        String outString = voting.serialize();
+        outState.putString(VOTE_NAME, outString);
+        outState.putInt(VOTE_NUM, count);
     }
 }
